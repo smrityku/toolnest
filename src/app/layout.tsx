@@ -22,10 +22,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  // TODO: Add Google Search Console verification
-  // verification: {
-  //   google: "YOUR_GOOGLE_VERIFICATION_CODE",
-  // },
+  verification: {
+    google: "xSyByodlianSfbnjK4_J_g4r65y0eDBMP2cpj-ns_Mg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
