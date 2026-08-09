@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://toolnest.pages.dev/sitemap.xml
+Sitemap: https://toolnest.smrityku.workers.dev/sitemap.xml

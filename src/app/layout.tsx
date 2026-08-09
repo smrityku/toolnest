@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Free online tools for developers and everyone. JSON formatter, Base64 encoder, word counter, UUID generator, and more. Everything runs in your browser — fast, private, no sign-up required.",
   keywords:
     "online tools, developer tools, json formatter, base64 encoder, word counter, uuid generator, free tools",
-  metadataBase: new URL("https://toolnest.pages.dev"),
+  metadataBase: new URL("https://toolnest.smrityku.workers.dev"),
   openGraph: {
     type: "website",
     locale: "en_US",

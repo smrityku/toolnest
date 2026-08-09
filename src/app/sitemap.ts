@@ -4,7 +4,7 @@ import { tools } from "@/registry/tools";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://toolnest.pages.dev";
+  const baseUrl = "https://toolnest.smrityku.workers.dev";
 
   const staticPages: MetadataRoute.Sitemap = [
     {
