@@ -84,6 +84,7 @@ export default function ColorConverter() {
           <div style={{ display: "flex", gap: "var(--space-3)", alignItems: "center" }}>
             <input
               type="color"
+              aria-label="Color preview picker"
               value={hexVal}
               onChange={(e) => setHex(e.target.value)}
               style={{
@@ -98,6 +99,7 @@ export default function ColorConverter() {
             />
             <input
               type="text"
+              aria-label="Hex color string"
               className="input"
               value={hex}
               onChange={(e) => setHex(e.target.value)}

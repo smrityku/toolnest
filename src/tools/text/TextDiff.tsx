@@ -112,7 +112,7 @@ export default function TextDiff() {
   return (
     <ToolLayout tool={tool}>
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-6)" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+        <div className={styles.toolGrid}>
           <div className={styles.inputSection}>
             <div className={styles.sectionHeader}>
               <label className={styles.label}>Original Text</label>

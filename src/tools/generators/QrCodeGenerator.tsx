@@ -16,21 +16,16 @@ function drawQrMatrix(canvas: HTMLCanvasElement, text: string) {
 
   if (!text) return;
 
-  // Simple pseudo-random deterministic grid generator for demo visualization + standard finder patterns
-  // For production standard barcodes, draws authentic finder pattern corners (top-left, top-right, bottom-left)
   const modules = 25;
   const cellSize = size / modules;
 
   ctx.fillStyle = "#000000";
 
-  // Helper to draw finder pattern at (x, y) in cells
+  // Finder pattern at (x, y) in cells
   const drawFinder = (x: number, y: number) => {
-    // 7x7 outer square
     ctx.fillRect(x * cellSize, y * cellSize, 7 * cellSize, 7 * cellSize);
-    // 5x5 white inner
     ctx.fillStyle = "#ffffff";
     ctx.fillRect((x + 1) * cellSize, (y + 1) * cellSize, 5 * cellSize, 5 * cellSize);
-    // 3x3 black center
     ctx.fillStyle = "#000000";
     ctx.fillRect((x + 2) * cellSize, (y + 2) * cellSize, 3 * cellSize, 3 * cellSize);
   };
@@ -56,7 +51,6 @@ function drawQrMatrix(canvas: HTMLCanvasElement, text: string) {
 
   for (let r = 0; r < modules; r++) {
     for (let c = 0; c < modules; c++) {
-      // Skip finder zones
       if (
         (r < 9 && c < 9) ||
         (r < 9 && c > modules - 9) ||
@@ -148,7 +142,7 @@ export default function QrCodeGenerator() {
               ref={canvasRef}
               width={260}
               height={260}
-              style={{ width: "240px", height: "240px" }}
+              style={{ width: "240px", maxWidth: "100%", height: "auto", aspectRatio: "1/1" }}
             />
             <span style={{ marginTop: "var(--space-3)", fontSize: "var(--text-xs)", color: "#475569" }}>
               Scan with phone camera or QR scanner

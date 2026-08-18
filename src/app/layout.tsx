@@ -9,14 +9,18 @@ export const metadata: Metadata = {
     template: "%s | ToolNest",
   },
   description:
-    "Free online tools for developers and everyone. JSON formatter, Base64 encoder, word counter, UUID generator, and more. Everything runs in your browser — fast, private, no sign-up required.",
+    "Free online developer and utility tools that run 100% in your browser. JSON formatter, Base64 encoder, JWT decoder, UUID generator, SQL formatter, and more.",
   keywords:
-    "online tools, developer tools, json formatter, base64 encoder, word counter, uuid generator, free tools",
+    "online tools, developer tools, json formatter, base64 encoder, word counter, uuid generator, jwt decoder, free tools",
   metadataBase: new URL("https://toolnest.smrityku.workers.dev"),
+  alternates: {
+    canonical: "https://toolnest.smrityku.workers.dev/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "ToolNest",
+    url: "https://toolnest.smrityku.workers.dev/",
   },
   robots: {
     index: true,
@@ -30,16 +34,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-theme="dark">
-      <head>
-        {/* TODO: Uncomment and add your GA4 Measurement ID */}
-        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-        <script dangerouslySetInnerHTML={{ __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-XXXXXXXXXX');
-        `}} /> */}
-      </head>
+      <head />
       <body>
         <Header />
         <main style={{ position: "relative", zIndex: 1, minHeight: "70vh" }}>

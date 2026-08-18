@@ -5,9 +5,15 @@ import styles from "../legal.module.css";
 export const metadata: Metadata = {
   title: "Privacy Policy — ToolNest",
   description:
-    "ToolNest privacy policy. Learn how we handle your data (all tools process 100% locally in your browser).",
+    "ToolNest privacy policy. Learn how we handle your data (all tools run 100% locally in your browser).",
   alternates: {
     canonical: "https://toolnest.smrityku.workers.dev/privacy-policy/",
+  },
+  openGraph: {
+    title: "Privacy Policy — ToolNest",
+    description: "Learn how ToolNest protects user privacy with 100% client-side data processing.",
+    url: "https://toolnest.smrityku.workers.dev/privacy-policy/",
+    type: "website",
   },
 };
 
@@ -19,40 +25,42 @@ export default function PrivacyPolicyPage() {
         <p className={styles.lastUpdated}>Last updated: August 2026</p>
 
         <section className={styles.section}>
-          <h2>1. Privacy-First Philosophy</h2>
+          <h2>1. Privacy-First Architecture</h2>
           <p>
             At ToolNest (
             <a href="https://toolnest.smrityku.workers.dev">
               https://toolnest.smrityku.workers.dev
             </a>
-            ), we design our tools with user privacy as a non-negotiable core
-            principle. All interactive developer utilities (such as JSON formatters,
-            Base64 decoders, JWT inspectors, UUID generators, and text counters)
-            execute 100% locally within your client browser using Web APIs and
-            JavaScript.
+            ), user privacy is a foundational engineering principle. All interactive
+            utilities (including JSON formatters, Base64 converters, JWT decoders,
+            UUID generators, SQL formatters, and text analyzers) run 100% locally in
+            your web browser using standard Web APIs and client-side JavaScript.
           </p>
           <p>
             <strong>
-              Your inputs, strings, access tokens, and JSON payloads are never
-              uploaded to ToolNest servers or saved to remote databases.
+              Your tool inputs, files, code snippets, tokens, and payloads are never
+              uploaded to ToolNest servers, stored in remote databases, or transmitted
+              to third-party APIs.
             </strong>
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>2. Information We Collect</h2>
-          <p>We do not collect personal information unless you voluntarily provide it:</p>
+          <h2>2. Information Collection &amp; Use</h2>
+          <p>We do not collect personal information through our tools. We collect information only in the following scenarios:</p>
           <ul>
             <li>
-              <strong>Contact Form Submissions:</strong> When you send a message
-              via our contact form, we collect your name, email address, topic,
-              and message content solely to respond to your inquiry.
+              <strong>Contact Inquiries:</strong> If you choose to contact us via
+              our contact form, we collect the name, email address, topic, and
+              message you provide solely to respond to your support request or feedback.
             </li>
             <li>
-              <strong>Aggregated Analytics:</strong> We may use Google Analytics 4
-              to monitor aggregate website traffic trends (e.g. page visits,
-              browser types, country-level geography, and device categories). GA4
-              does not log your tool inputs or personal identifiers.
+              <strong>Aggregate Web Analytics &amp; Server Logs:</strong> Like most web
+              services, our hosting infrastructure (Cloudflare) and aggregate web
+              measurement tools collect standard technical metrics such as page request
+              counts, referring URLs, approximate geography (country/region level),
+              and browser user-agent strings for security and site reliability. No tool
+              input data is captured or logged.
             </li>
           </ul>
         </section>
@@ -63,35 +71,23 @@ export default function PrivacyPolicyPage() {
           <ul>
             <li>
               <strong>Theme Preference (localStorage):</strong> We store your
-              Dark Mode / Light Mode choice in your browser&apos;s localStorage so
-              your visual preference persists across visits.
+              Dark/Light theme choice in your browser&apos;s localStorage so your
+              viewing preference persists across sessions.
             </li>
             <li>
-              <strong>Analytics &amp; Advertising Cookies:</strong> Third-party
-              vendors, including Google, may use cookies to serve relevant ads
-              based on prior visits to our site or other websites.
+              <strong>Essential Cookies:</strong> Cloudflare and analytics services
+              may set security and aggregate traffic cookies.
             </li>
           </ul>
-          <p>
-            You can manage or disable cookies via your browser settings or opt
-            out of Google&apos;s personalized advertising by visiting{" "}
-            <a
-              href="https://www.google.com/settings/ads"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Google Ads Settings
-            </a>
-            .
-          </p>
         </section>
 
         <section className={styles.section}>
-          <h2>4. Third-Party Services</h2>
-          <p>We rely on the following reputable infrastructure providers:</p>
+          <h2>4. Third-Party Infrastructure</h2>
+          <p>ToolNest is delivered using reputable infrastructure services:</p>
           <ul>
             <li>
-              <strong>Cloudflare:</strong> CDN, DNS, and edge network hosting (
+              <strong>Cloudflare:</strong> Content delivery network, security, and
+              DNS management (
               <a
                 href="https://www.cloudflare.com/privacypolicy/"
                 target="_blank"
@@ -101,35 +97,23 @@ export default function PrivacyPolicyPage() {
               </a>
               ).
             </li>
-            <li>
-              <strong>Google Analytics &amp; Google AdSense:</strong> Traffic
-              measurement and advertising technologies (
-              <a
-                href="https://policies.google.com/privacy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Google Privacy Policy
-              </a>
-              ).
-            </li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>5. Data Retention &amp; Security</h2>
+          <h2>5. Data Security</h2>
           <p>
-            Because we do not store tool input data on servers, there is no
-            server-side tool data to retain or breach. Contact form inquiries are
-            retained only as long as necessary to resolve your support request.
+            Because tool data is processed purely in client memory, there is no
+            server-side storage of your data. We recommend ensuring your local device
+            and browser extensions are secure when handling confidential information.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>6. Contact Us</h2>
+          <h2>6. Contact Information</h2>
           <p>
-            If you have questions about this Privacy Policy, please contact us
-            at <Link href="/contact/">toolnest contact page</Link> or email{" "}
+            If you have questions or concerns regarding this Privacy Policy, please
+            contact us via our <Link href="/contact/">contact page</Link> or email{" "}
             <code>smrityku@gmail.com</code>.
           </p>
         </section>
