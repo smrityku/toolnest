@@ -1,20 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.css";
 
 export default function Header() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("theme") as "dark" | "light" | null;
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.setAttribute("data-theme", saved);
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("theme") as "dark" | "light" | null;
+      if (saved) {
+        document.documentElement.setAttribute("data-theme", saved);
+        return saved;
+      }
     }
-  }, []);
+    return "dark";
+  });
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
@@ -33,7 +34,13 @@ export default function Header() {
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
           <Link href="/" className={styles.navLink} onClick={() => setMenuOpen(false)}>
+            Home
+          </Link>
+          <Link href="/tools/" className={styles.navLink} onClick={() => setMenuOpen(false)}>
             Tools
+          </Link>
+          <Link href="/guides/" className={styles.navLink} onClick={() => setMenuOpen(false)}>
+            Guides
           </Link>
           <Link href="/about/" className={styles.navLink} onClick={() => setMenuOpen(false)}>
             About

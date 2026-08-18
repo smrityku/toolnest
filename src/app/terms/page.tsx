@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "../legal.module.css";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
+  title: "Terms of Service — ToolNest",
   description:
-    "ToolNest terms of service. Usage terms, disclaimers, and limitations of liability.",
+    "ToolNest terms of service. Usage terms, intellectual property, disclaimers, and limitations of liability.",
+  alternates: {
+    canonical: "https://toolnest.smrityku.workers.dev/terms/",
+  },
+  openGraph: {
+    title: "Terms of Service — ToolNest",
+    description: "Usage terms and service guidelines for ToolNest utilities.",
+    url: "https://toolnest.smrityku.workers.dev/terms/",
+    type: "website",
+  },
 };
 
 export default function TermsPage() {
@@ -15,86 +25,76 @@ export default function TermsPage() {
         <p className={styles.lastUpdated}>Last updated: August 2026</p>
 
         <section className={styles.section}>
-          <h2>Acceptance of Terms</h2>
+          <h2>1. Acceptance of Terms</h2>
           <p>
-            By accessing and using ToolNest, you agree to be bound by these
-            Terms of Service. If you do not agree with any part of these terms,
-            please do not use our website.
+            By accessing or using ToolNest (
+            <a href="https://toolnest.smrityku.workers.dev">
+              https://toolnest.smrityku.workers.dev
+            </a>
+            ), you agree to comply with and be bound by these Terms of Service.
+            If you do not agree with any part of these terms, please discontinue
+            use of our website.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Description of Service</h2>
+          <h2>2. Description of Service</h2>
           <p>
-            ToolNest provides free online developer and utility tools that
-            process data entirely in your web browser. Our tools are provided
-            &quot;as is&quot; and &quot;as available&quot; without any warranties
-            of any kind.
+            ToolNest provides free, browser-based online developer tools,
+            formatters, encoders, decoders, generators, and educational technical
+            guides. All utilities are provided &quot;as is&quot; and &quot;as
+            available&quot; without warranties of any kind.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Use of Tools</h2>
-          <p>You may use ToolNest tools for any lawful purpose. You agree not to:</p>
+          <h2>3. Acceptable Use</h2>
+          <p>
+            You may use ToolNest for personal, educational, commercial, and
+            software development purposes. You agree not to:
+          </p>
           <ul>
             <li>
-              Use our tools to process illegal, harmful, or malicious content.
+              Use our services to process intentionally harmful or illegal
+              material.
             </li>
             <li>
-              Attempt to interfere with or disrupt the website or its
+              Attempt to disrupt, overload, or impair the website&apos;s hosting
               infrastructure.
             </li>
             <li>
-              Scrape, crawl, or otherwise extract content from the site in an
-              automated manner that places undue burden on our infrastructure.
+              Scrape or query the platform in an automated abusive manner that
+              degrades site availability for other users.
             </li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>Disclaimer of Warranties</h2>
+          <h2>4. Intellectual Property &amp; Output Ownership</h2>
           <p>
-            ToolNest tools are provided for informational and utility purposes
-            only. We make no guarantees regarding the accuracy, reliability, or
-            completeness of any tool&apos;s output. You should always verify
-            results independently, especially for critical applications.
+            The ToolNest name, branding, layout design, and original guide
+            articles are the intellectual property of ToolNest. Any output,
+            formatted code, converted spreadsheets, or cryptographic hashes
+            generated through our tools belong entirely to you.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Limitation of Liability</h2>
+          <h2>5. Disclaimer of Warranties &amp; Limitation of Liability</h2>
           <p>
-            In no event shall ToolNest be liable for any direct, indirect,
-            incidental, special, consequential, or punitive damages arising
-            from your use of our tools or website.
+            ToolNest does not guarantee that tool outputs will be error-free or
+            suitable for specific legal, financial, or production deployment
+            needs. To the maximum extent permitted by applicable law, ToolNest
+            shall not be liable for any direct, indirect, incidental, or
+            consequential damages resulting from the use of our services.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Intellectual Property</h2>
+          <h2>6. Contact</h2>
           <p>
-            The ToolNest website design, logo, and original content are our
-            intellectual property. The tools themselves use standard algorithms
-            and open-source libraries. Any output generated by the tools belongs
-            to you.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Changes to Terms</h2>
-          <p>
-            We reserve the right to update these terms at any time. Changes
-            will be reflected by updating the &quot;Last updated&quot; date. Continued
-            use of the website after changes constitutes acceptance of the
-            revised terms.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Contact</h2>
-          <p>
-            If you have questions about these terms, please{" "}
-            <a href="/contact/">contact us</a>.
+            For questions regarding these terms, please visit our{" "}
+            <Link href="/contact/">contact page</Link>.
           </p>
         </section>
       </div>

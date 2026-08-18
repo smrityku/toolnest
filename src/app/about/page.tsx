@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "../legal.module.css";
 
 export const metadata: Metadata = {
-  title: "About ToolNest — Free Online Developer Tools",
+  title: "About ToolNest — Free Online Developer Tools & Philosophy",
   description:
-    "Learn about ToolNest — a collection of free, privacy-first online developer and utility tools that run entirely in your browser.",
+    "Learn about ToolNest — a collection of free, privacy-first online developer and utility tools that run entirely in your browser with zero data collection.",
+  alternates: {
+    canonical: "https://toolnest.smrityku.workers.dev/about/",
+  },
+  openGraph: {
+    title: "About ToolNest — Free Online Developer Tools & Philosophy",
+    description:
+      "Learn about ToolNest — a collection of free, privacy-first online developer and utility tools that run entirely in your browser.",
+    url: "https://toolnest.smrityku.workers.dev/about/",
+    type: "website",
+  },
 };
 
 export default function AboutPage() {
@@ -16,63 +27,59 @@ export default function AboutPage() {
         <section className={styles.section}>
           <h2>What is ToolNest?</h2>
           <p>
-            ToolNest is a collection of free online tools built for developers,
-            writers, and anyone who needs quick utility tools without the hassle
-            of downloading software or creating accounts.
+            ToolNest is a dedicated, free online developer utilities platform built
+            to help software engineers, web developers, technical writers, and
+            students perform everyday data transformations quickly and securely.
           </p>
           <p>
-            Every tool on ToolNest runs entirely in your browser. Your data
-            never leaves your device — we don&apos;t process, store, or transmit
-            any of the content you work with.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Our Mission</h2>
-          <p>
-            We believe that essential developer and utility tools should be
-            free, fast, and private. Too many online tools require sign-ups,
-            collect unnecessary data, or serve excessive advertisements that
-            make them difficult to use.
-          </p>
-          <p>
-            ToolNest aims to be different — providing genuinely useful tools
-            with a clean interface, zero data collection, and no barriers to
-            use.
+            Whether you need to format and validate a JSON API payload, inspect a
+            JWT token, encode text to Base64, generate cryptographically random
+            UUIDs, beautify SQL queries, or calculate cryptographic SHA-256
+            digests, ToolNest provides focused, reliable tools right inside your
+            web browser.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>How It Works</h2>
+          <h2>Our Philosophy: Privacy-First &amp; Client-Side</h2>
           <p>
-            All ToolNest tools use client-side JavaScript to process your data
-            directly in your web browser. This means:
+            Many online tools quietly upload user inputs to remote servers,
+            introduce intrusive advertisements that disrupt work, or require
+            unnecessary user accounts.
+          </p>
+          <p>
+            ToolNest is built on a different model:
           </p>
           <ul>
             <li>
-              <strong>No server processing</strong> — Your data is never
-              uploaded to any server.
+              <strong>100% Client-Side Processing:</strong> Every tool is powered
+              by browser-native JavaScript and Web APIs (such as the Web Crypto
+              API and DOMParser). Your sensitive configuration files, tokens,
+              and payloads never touch a server.
             </li>
             <li>
-              <strong>Instant results</strong> — No waiting for network
-              requests.
+              <strong>Zero Friction:</strong> No logins, no sign-ups, and no usage
+              quotas.
             </li>
             <li>
-              <strong>Works offline</strong> — Once loaded, many tools work
-              without an internet connection.
+              <strong>Fast and Responsive:</strong> Because processing happens
+              locally in memory, results are calculated instantly without network
+              round-trips.
             </li>
             <li>
-              <strong>Maximum privacy</strong> — We literally cannot see your
-              data.
+              <strong>High-Quality Explanations:</strong> Each tool is paired with
+              clear usage instructions, examples, and technical guides to help
+              users understand the underlying standards.
             </li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>Contact</h2>
+          <h2>Feedback &amp; Suggestions</h2>
           <p>
-            Have a suggestion for a new tool? Found a bug? Want to get in touch?
-            Visit our <a href="/contact/">contact page</a>.
+            ToolNest is actively maintained and continually expanding. If you
+            discover a bug or would like to request a new developer tool, please
+            reach out via our <Link href="/contact/">contact page</Link>.
           </p>
         </section>
       </div>

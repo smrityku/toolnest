@@ -5,19 +5,13 @@ import styles from "../legal.module.css";
 export const metadata: Metadata = {
   title: "Privacy Policy — ToolNest",
   description:
-    "ToolNest privacy policy. Learn how we handle your data (all tools run 100% locally in your browser).",
+    "ToolNest privacy policy. Learn how we handle your data (all tools process 100% locally in your browser).",
   alternates: {
-    canonical: "https://toolnest.smrityku.workers.dev/privacy/",
-  },
-  openGraph: {
-    title: "Privacy Policy — ToolNest",
-    description: "Learn how ToolNest protects user privacy with 100% client-side data processing.",
-    url: "https://toolnest.smrityku.workers.dev/privacy/",
-    type: "website",
+    canonical: "https://toolnest.smrityku.workers.dev/privacy-policy/",
   },
 };
 
-export default function PrivacyPage() {
+export default function PrivacyPolicyPage() {
   return (
     <div className={styles.legalPage}>
       <div className={styles.container}>
