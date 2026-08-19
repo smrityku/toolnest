@@ -130,6 +130,19 @@ export default function JwtDecoder() {
 
           {payload && (
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+              <div
+                style={{
+                  padding: "var(--space-3) var(--space-4)",
+                  background: "rgba(59, 130, 246, 0.08)",
+                  border: "1px solid rgba(59, 130, 246, 0.25)",
+                  borderRadius: "var(--radius-md)",
+                  fontSize: "var(--text-xs)",
+                  color: "var(--text-secondary)",
+                  lineHeight: "var(--leading-normal)",
+                }}
+              >
+                🔒 <strong>Browser-Only Decoding:</strong> This tool parses Base64URL claims client-side. Decoding does not verify the cryptographic signature against your secret key or OAuth JWKS endpoint.
+              </div>
               {expDate && (
                 <div
                   style={{

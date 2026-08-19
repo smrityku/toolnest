@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumb from "@/components/layout/Breadcrumb";
+import { getCanonicalUrl } from "@/lib/config";
 import styles from "../legal.module.css";
 
 export const metadata: Metadata = {
-  title: "About ToolNest — Free Online Developer Tools & Philosophy",
+  title: "About ToolNest — Free Online Developer Tools & Browser-Local Philosophy",
   description:
-    "Learn about ToolNest — a collection of free, privacy-first online developer and utility tools that run entirely in your browser with zero data collection.",
+    "Learn about ToolNest — an independent suite of fast, free, privacy-first developer and utility tools that execute 100% locally in your web browser with zero server data storage.",
   alternates: {
-    canonical: "https://toolnest.smrityku.workers.dev/about/",
+    canonical: getCanonicalUrl("about/"),
   },
   openGraph: {
     title: "About ToolNest — Free Online Developer Tools & Philosophy",
     description:
-      "Learn about ToolNest — a collection of free, privacy-first online developer and utility tools that run entirely in your browser.",
-    url: "https://toolnest.smrityku.workers.dev/about/",
+      "Learn about ToolNest — an independent suite of fast, free, privacy-first developer and utility tools that execute 100% locally in your web browser.",
+    url: getCanonicalUrl("about/"),
     type: "website",
   },
 };
@@ -22,64 +24,73 @@ export default function AboutPage() {
   return (
     <div className={styles.legalPage}>
       <div className={styles.container}>
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "About" },
+          ]}
+        />
+
         <h1 className={styles.title}>About ToolNest</h1>
 
         <section className={styles.section}>
           <h2>What is ToolNest?</h2>
           <p>
-            ToolNest is a dedicated, free online developer utilities platform built
-            to help software engineers, web developers, technical writers, and
-            students perform everyday data transformations quickly and securely.
+            ToolNest is an independent online developer utilities platform engineered
+            to help software engineers, DevOps specialists, web developers, technical
+            writers, and students perform essential data transformations quickly,
+            accurately, and securely.
           </p>
           <p>
-            Whether you need to format and validate a JSON API payload, inspect a
-            JWT token, encode text to Base64, generate cryptographically random
-            UUIDs, beautify SQL queries, or calculate cryptographic SHA-256
-            digests, ToolNest provides focused, reliable tools right inside your
-            web browser.
+            Whether you need to format and validate an intricate JSON payload, inspect
+            claims in a JWT token, encode strings to Base64, generate cryptographically
+            random UUIDs or passwords, beautify SQL queries, or compute cryptographic
+            SHA-256 digests, ToolNest provides focused, lightning-fast utilities directly
+            inside your browser.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Our Philosophy: Privacy-First &amp; Client-Side</h2>
+          <h2>Our Philosophy: Privacy-First &amp; Client-Side Execution</h2>
           <p>
-            Many online tools quietly upload user inputs to remote servers,
-            introduce intrusive advertisements that disrupt work, or require
-            unnecessary user accounts.
+            Many traditional web utilities quietly upload user inputs, code snippets,
+            and authentication tokens to remote servers, log input payloads in backend
+            databases, or require mandatory user accounts.
           </p>
           <p>
-            ToolNest is built on a different model:
+            ToolNest is built from the ground up on a fundamentally different engineering architecture:
           </p>
           <ul>
             <li>
-              <strong>100% Client-Side Processing:</strong> Every tool is powered
-              by browser-native JavaScript and Web APIs (such as the Web Crypto
-              API and DOMParser). Your sensitive configuration files, tokens,
-              and payloads never touch a server.
+              <strong>100% Client-Side Processing:</strong> Every tool executes strictly
+              within your local browser sandbox via modern Web APIs (including Web Crypto,
+              TextEncoder/Decoder, and DOMParser). Your proprietary payloads, credentials,
+              and configuration files never touch a ToolNest server or third-party API.
             </li>
             <li>
-              <strong>Zero Friction:</strong> No logins, no sign-ups, and no usage
-              quotas.
+              <strong>Zero Friction:</strong> No logins, no sign-ups, no tracking cookies,
+              and no artificial paywalls or usage quotas.
             </li>
             <li>
-              <strong>Fast and Responsive:</strong> Because processing happens
-              locally in memory, results are calculated instantly without network
+              <strong>Zero Network Latency:</strong> Because computations run entirely in
+              local CPU memory, results are calculated instantaneously with zero network
               round-trips.
             </li>
             <li>
-              <strong>High-Quality Explanations:</strong> Each tool is paired with
-              clear usage instructions, examples, and technical guides to help
-              users understand the underlying standards.
+              <strong>Technical Rigor &amp; Documentation:</strong> Every tool is paired with
+              clear usage guides, syntax edge cases, RFC references, and practical developer
+              documentation to explain the underlying standards.
             </li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>Feedback &amp; Suggestions</h2>
+          <h2>Maintenance &amp; Feedback</h2>
           <p>
-            ToolNest is actively maintained and continually expanding. If you
-            discover a bug or would like to request a new developer tool, please
-            reach out via our <Link href="/contact/">contact page</Link>.
+            ToolNest is continually maintained and expanded to support modern web and
+            data standards. If you discover a bug, notice an edge case, or would like to
+            suggest an improvement, please contact us via our{" "}
+            <Link href="/contact/">contact page</Link>.
           </p>
         </section>
       </div>

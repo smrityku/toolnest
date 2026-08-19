@@ -1,79 +1,73 @@
 import type { MetadataRoute } from "next";
 import { tools } from "@/registry/tools";
 import { guides } from "@/registry/guides";
+import { getCanonicalUrl, getToolCanonicalUrl, getGuideCanonicalUrl } from "@/lib/config";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://toolnest.smrityku.workers.dev";
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}/`,
+      url: getCanonicalUrl("/"),
       lastModified: now,
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/tools/`,
+      url: getCanonicalUrl("/tools/"),
       lastModified: now,
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/guides/`,
+      url: getCanonicalUrl("/guides/"),
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/about/`,
+      url: getCanonicalUrl("/about/"),
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.6,
     },
     {
-      url: `${baseUrl}/contact/`,
+      url: getCanonicalUrl("/contact/"),
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.6,
     },
     {
-      url: `${baseUrl}/privacy/`,
+      url: getCanonicalUrl("/privacy-policy/"),
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.3,
+      priority: 0.4,
     },
     {
-      url: `${baseUrl}/privacy-policy/`,
+      url: getCanonicalUrl("/terms/"),
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.3,
+      priority: 0.4,
     },
     {
-      url: `${baseUrl}/terms/`,
+      url: getCanonicalUrl("/disclaimer/"),
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/disclaimer/`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.3,
+      priority: 0.4,
     },
   ];
 
   const toolPages: MetadataRoute.Sitemap = tools.map((tool) => ({
-    url: `${baseUrl}/${tool.category}/${tool.slug}/`,
+    url: getToolCanonicalUrl(tool.category, tool.slug),
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
   const guidePages: MetadataRoute.Sitemap = guides.map((guide) => ({
-    url: `${baseUrl}/guides/${guide.slug}/`,
+    url: getGuideCanonicalUrl(guide.slug),
     lastModified: new Date(guide.updatedAt),
     changeFrequency: "monthly" as const,
     priority: 0.7,

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import ToolLayout from "@/components/tool/ToolLayout";
 import { getToolBySlug } from "@/registry/tools";
+import { getSiteUrl } from "@/lib/config";
 import styles from "../ToolStyles.module.css";
 
 // Compact lightweight client-side QR Matrix Drawer using HTML5 canvas
@@ -70,7 +71,7 @@ function drawQrMatrix(canvas: HTMLCanvasElement, text: string) {
 
 export default function QrCodeGenerator() {
   const tool = getToolBySlug("qr-code-generator")!;
-  const [text, setText] = useState("https://toolnest.smrityku.workers.dev");
+  const [text, setText] = useState(() => getSiteUrl());
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -104,7 +105,7 @@ export default function QrCodeGenerator() {
             spellCheck={false}
           />
           <div className="btn-group">
-            <button className="btn" onClick={() => setText("https://toolnest.smrityku.workers.dev")}>
+            <button className="btn" onClick={() => setText(getSiteUrl())}>
               🌐 Website URL
             </button>
             <button className="btn" onClick={() => setText("WIFI:S:MyNetwork;T:WPA;P:SecretPassword;;")}>

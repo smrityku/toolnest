@@ -31,8 +31,12 @@ export interface ToolDefinition {
   faq: FAQ[];
   howToUse: string[];
   whatIs?: string;
+  howItWorks?: string;
+  useCases?: string[];
   features?: string[];
   examples?: ToolExample[];
+  limitations?: string;
+  securityNotes?: string;
   privacyNote?: string;
 }
 
@@ -59,4 +63,3 @@ export interface GuideDefinition {
   contentHtml: string;
   faq?: FAQ[];
 }
-

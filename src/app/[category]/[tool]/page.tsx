@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getToolBySlug, getAllSlugs } from "@/registry/tools";
+import { getToolCanonicalUrl } from "@/lib/config";
 
 // Existing Tools
 import JsonFormatter from "@/tools/json/JsonFormatter";
@@ -80,6 +81,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const tool = getToolBySlug(toolSlug);
   if (!tool) return { title: "Tool Not Found" };
 
+  const canonicalUrl = getToolCanonicalUrl(tool.category, tool.slug);
+
   return {
     title: tool.title,
     description: tool.description,
@@ -88,10 +91,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: tool.title,
       description: tool.description,
       type: "website",
-      url: `https://toolnest.smrityku.workers.dev/${tool.category}/${tool.slug}/`,
+      url: canonicalUrl,
+    },
+    twitter: {
+      card: "summary",
+      title: tool.title,
+      description: tool.description,
     },
     alternates: {
-      canonical: `https://toolnest.smrityku.workers.dev/${tool.category}/${tool.slug}/`,
+      canonical: canonicalUrl,
     },
   };
 }

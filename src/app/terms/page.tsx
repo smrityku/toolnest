@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumb from "@/components/layout/Breadcrumb";
+import { getCanonicalUrl, getSiteUrl } from "@/lib/config";
 import styles from "../legal.module.css";
+
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   title: "Terms of Service — ToolNest",
   description:
-    "ToolNest terms of service. Usage terms, intellectual property, disclaimers, and limitations of liability.",
+    "ToolNest Terms of Service. Clear terms on acceptable use, output ownership, intellectual property, service availability, and limitations of liability.",
   alternates: {
-    canonical: "https://toolnest.smrityku.workers.dev/terms/",
+    canonical: getCanonicalUrl("terms/"),
   },
   openGraph: {
     title: "Terms of Service — ToolNest",
-    description: "Usage terms and service guidelines for ToolNest utilities.",
-    url: "https://toolnest.smrityku.workers.dev/terms/",
+    description: "Terms and conditions governing the use of ToolNest online utilities.",
+    url: getCanonicalUrl("terms/"),
     type: "website",
   },
 };
@@ -21,79 +25,86 @@ export default function TermsPage() {
   return (
     <div className={styles.legalPage}>
       <div className={styles.container}>
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Terms of Service" },
+          ]}
+        />
+
         <h1 className={styles.title}>Terms of Service</h1>
         <p className={styles.lastUpdated}>Last updated: August 2026</p>
 
         <section className={styles.section}>
           <h2>1. Acceptance of Terms</h2>
           <p>
-            By accessing or using ToolNest (
-            <a href="https://toolnest.smrityku.workers.dev">
-              https://toolnest.smrityku.workers.dev
-            </a>
-            ), you agree to comply with and be bound by these Terms of Service.
-            If you do not agree with any part of these terms, please discontinue
-            use of our website.
+            By accessing or using ToolNest (<a href={siteUrl}>{siteUrl}</a>), you agree to
+            be bound by these Terms of Service. If you disagree with any part of these
+            terms, you should discontinue use of the website.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>2. Description of Service</h2>
+          <h2>2. Description of Utilities</h2>
           <p>
-            ToolNest provides free, browser-based online developer tools,
-            formatters, encoders, decoders, generators, and educational technical
-            guides. All utilities are provided &quot;as is&quot; and &quot;as
-            available&quot; without warranties of any kind.
+            ToolNest provides free, browser-based online developer formatters, encoders,
+            decoders, generators, validators, and educational technical guides. All
+            utilities and documentation are provided on an &quot;as is&quot; and &quot;as
+            available&quot; basis without warranties of any kind.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>3. Acceptable Use</h2>
+          <h2>3. Acceptable Use Policy</h2>
           <p>
-            You may use ToolNest for personal, educational, commercial, and
-            software development purposes. You agree not to:
+            You are granted a non-exclusive license to use ToolNest for personal,
+            educational, commercial, and professional software development purposes. You
+            agree not to:
           </p>
           <ul>
             <li>
-              Use our services to process intentionally harmful or illegal
-              material.
+              Use the website to intentionally distribute malicious scripts or harmful
+              payloads.
             </li>
             <li>
-              Attempt to disrupt, overload, or impair the website&apos;s hosting
-              infrastructure.
+              Attempt to disrupt, overload, or compromise the stability of our hosting
+              infrastructure or edge nodes.
             </li>
             <li>
-              Scrape or query the platform in an automated abusive manner that
-              degrades site availability for other users.
+              Engage in abusive automated scraping that impairs site performance for other
+              engineers.
             </li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>4. Intellectual Property &amp; Output Ownership</h2>
+          <h2>4. Output Ownership &amp; Intellectual Property</h2>
           <p>
-            The ToolNest name, branding, layout design, and original guide
-            articles are the intellectual property of ToolNest. Any output,
-            formatted code, converted spreadsheets, or cryptographic hashes
-            generated through our tools belong entirely to you.
+            <strong>Your Data &amp; Output Belong to You:</strong> Any transformed text,
+            formatted JSON/SQL, converted CSV, generated hashes, or cryptographic UUIDs
+            produced via ToolNest remain 100% your property. ToolNest claims zero
+            intellectual property rights over your inputs or generated outputs.
+          </p>
+          <p>
+            The ToolNest name, logo, original code, UI components, and technical guide
+            articles are protected by applicable intellectual property and copyright laws.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>5. Disclaimer of Warranties &amp; Limitation of Liability</h2>
+          <h2>5. Limitation of Liability</h2>
           <p>
-            ToolNest does not guarantee that tool outputs will be error-free or
-            suitable for specific legal, financial, or production deployment
-            needs. To the maximum extent permitted by applicable law, ToolNest
-            shall not be liable for any direct, indirect, incidental, or
-            consequential damages resulting from the use of our services.
+            While ToolNest strives to provide precise, standard-compliant implementations,
+            ToolNest and its maintainers shall not be liable for any direct, indirect,
+            incidental, or consequential damages resulting from the use of, or inability to
+            use, the utilities or documentation provided on this site.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>6. Contact</h2>
+          <h2>6. Inquiries</h2>
           <p>
-            For questions regarding these terms, please visit our{" "}
+            For questions regarding these Terms of Service, please contact us via our{" "}
             <Link href="/contact/">contact page</Link>.
           </p>
         </section>

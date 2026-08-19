@@ -6,6 +6,7 @@ import { getToolBySlug } from "@/registry/tools";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import FAQ from "@/components/seo/FAQ";
 import RelatedGuides from "@/components/seo/RelatedGuides";
+import { getCanonicalUrl, getGuideCanonicalUrl, SITE_CONFIG } from "@/lib/config";
 import styles from "./guide-detail.module.css";
 
 export function generateStaticParams() {
@@ -21,6 +22,8 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   const guide = getGuideBySlug(slug);
   if (!guide) return { title: "Guide Not Found" };
 
+  const canonicalUrl = getGuideCanonicalUrl(guide.slug);
+
   return {
     title: `${guide.title} | ToolNest Guides`,
     description: guide.description,
@@ -29,12 +32,17 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
       title: guide.title,
       description: guide.description,
       type: "article",
-      url: `https://toolnest.smrityku.workers.dev/guides/${guide.slug}/`,
+      url: canonicalUrl,
       publishedTime: guide.publishedAt,
       modifiedTime: guide.updatedAt,
     },
+    twitter: {
+      card: "summary",
+      title: guide.title,
+      description: guide.description,
+    },
     alternates: {
-      canonical: `https://toolnest.smrityku.workers.dev/guides/${guide.slug}/`,
+      canonical: canonicalUrl,
     },
   };
 }
@@ -47,6 +55,10 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
     notFound();
   }
 
+  const guideUrl = getGuideCanonicalUrl(guide.slug);
+  const homeUrl = getCanonicalUrl("/");
+  const guidesUrl = getCanonicalUrl("guides/");
+
   const relatedTools = guide.relatedTools
     .map((s) => getToolBySlug(s))
     .filter(Boolean);
@@ -58,17 +70,22 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
         "@type": "Article",
         headline: guide.title,
         description: guide.description,
-        url: `https://toolnest.smrityku.workers.dev/guides/${guide.slug}/`,
+        url: guideUrl,
         datePublished: guide.publishedAt,
         dateModified: guide.updatedAt,
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `https://toolnest.smrityku.workers.dev/guides/${guide.slug}/`,
+          "@id": guideUrl,
+        },
+        author: {
+          "@type": "Organization",
+          name: SITE_CONFIG.name,
+          url: homeUrl,
         },
         publisher: {
           "@type": "Organization",
-          name: "ToolNest",
-          url: "https://toolnest.smrityku.workers.dev",
+          name: SITE_CONFIG.name,
+          url: homeUrl,
         },
       },
       {
@@ -78,22 +95,37 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://toolnest.smrityku.workers.dev/",
+            item: homeUrl,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Guides",
-            item: "https://toolnest.smrityku.workers.dev/guides/",
+            item: guidesUrl,
           },
           {
             "@type": "ListItem",
             position: 3,
             name: guide.title,
-            item: `https://toolnest.smrityku.workers.dev/guides/${guide.slug}/`,
+            item: guideUrl,
           },
         ],
       },
+      ...(guide.faq && guide.faq.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              mainEntity: guide.faq.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: item.answer,
+                },
+              })),
+            },
+          ]
+        : []),
     ],
   };
 
@@ -111,6 +143,7 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
             { label: "Guides", href: "/guides/" },
             { label: guide.title },
           ]}
+          skipSchema={true}
         />
 
         <header className={styles.header}>

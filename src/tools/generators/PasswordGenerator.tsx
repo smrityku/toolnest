@@ -10,6 +10,21 @@ const LOWER = "abcdefghijklmnopqrstuvwxyz";
 const NUMBERS = "0123456789";
 const SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
+function getRandomIndex(max: number): number {
+  if (typeof crypto === "undefined" || !crypto.getRandomValues) {
+    return Math.floor(Math.random() * max);
+  }
+  const maxUint32 = 0xffffffff;
+  const limit = maxUint32 - (maxUint32 % max);
+  const buffer = new Uint32Array(1);
+  let randomVal = 0;
+  do {
+    crypto.getRandomValues(buffer);
+    randomVal = buffer[0];
+  } while (randomVal >= limit);
+  return randomVal % max;
+}
+
 function generateRandomPassword(
   length: number,
   useUpper: boolean,
@@ -32,16 +47,9 @@ function generateRandomPassword(
     return { pass: "", bits: 0 };
   }
 
-  const randomBuffer = new Uint32Array(length);
-  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-    crypto.getRandomValues(randomBuffer);
-  } else {
-    for (let i = 0; i < length; i++) randomBuffer[i] = Math.floor(Math.random() * 1000000);
-  }
-
   let result = "";
   for (let i = 0; i < length; i++) {
-    result += charset[randomBuffer[i] % charset.length];
+    result += charset[getRandomIndex(charset.length)];
   }
 
   const bits = Math.round(length * Math.log2(charset.length));

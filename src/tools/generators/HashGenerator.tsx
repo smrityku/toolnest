@@ -153,8 +153,9 @@ export default function HashGenerator() {
         { name: "SHA-1", value: sha1Val },
         { name: "SHA-384", value: sha384Val },
       ]);
-    } catch (err) {
-      console.error(err);
+    } catch {
+      // Graceful fallback for non-UTF8 or unsupported inputs
+      setHashes([]);
     }
   };
 

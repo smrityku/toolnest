@@ -1,16 +1,18 @@
 import Link from "next/link";
+import { getCanonicalUrl } from "@/lib/config";
 import styles from "./Breadcrumb.module.css";
 
-interface BreadcrumbItem {
+export interface BreadcrumbItem {
   label: string;
   href?: string;
 }
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  skipSchema?: boolean;
 }
 
-export default function Breadcrumb({ items }: BreadcrumbProps) {
+export default function Breadcrumb({ items, skipSchema = false }: BreadcrumbProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -18,16 +20,18 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      ...(item.href ? { item: item.href } : {}),
+      item: item.href ? getCanonicalUrl(item.href) : undefined,
     })),
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {!skipSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <nav className={styles.breadcrumb} aria-label="Breadcrumb">
         <ol className={styles.list}>
           {items.map((item, index) => (
